@@ -1,40 +1,23 @@
 # Deployment & Operations Guide: Product Worker
 
-## 🚀 Live Access & URLs
-- **Live Public Access URL:** [/preview/prod-product-worker-305d2d/](/preview/prod-product-worker-305d2d/)
-- **Internal Port:** `0`
+## 🚀 Live Access URLs
+- **Public Preview URL:** [https://river-alternatives-isolated-parker.trycloudflare.com/preview/prod-product-worker-305d2d/](https://river-alternatives-isolated-parker.trycloudflare.com/preview/prod-product-worker-305d2d/)
+- **Local Gateway Path:** [/preview/prod-product-worker-305d2d/](/preview/prod-product-worker-305d2d/)
+- **Internal Port:** `8104`
+- **Process PID:** `587238`
 - **Runtime Engine:** `python_preview`
-- **Deployment Status:** `DEPLOYED / ACTIVE`
-- **Timestamp:** `2026-09-19T19:05:09.818801+00:00`
+- **Health Status:** `HEALTHY (HTTP 200)`
+- **Deployed Timestamp:** `2026-09-19T19:05:13.643361+00:00`
 
-## 🛠️ Management & Service Control
-### Launch Command
+## 📋 Execution Command
 ```bash
-python3 app.py --port 0
+/usr/local/lib/hermes-agent/venv/bin/python3 app.py --port 8104
 ```
 
-### Health Check Probe
+## 🩺 Health Check Verification
 ```bash
-curl -I http://127.0.0.1:0/
+curl -I http://127.0.0.1:8104/
 ```
 
-### Systemd Service Template
-```ini
-[Unit]
-Description=Product Worker Service
-After=network.target
-
-[Service]
-Type=simple
-WorkingDirectory=/tmp/pytest-of-root/pytest-13/test_supervised_worker_lifecyc0/workspaces/prod-product-worker-305d2d
-ExecStart=/usr/bin/python3 /tmp/pytest-of-root/pytest-13/test_supervised_worker_lifecyc0/workspaces/prod-product-worker-305d2d/app.py
-Restart=always
-RestartSec=3
-
-[Install]
-WantedBy=multi-user.target
-```
-
-## 🔒 Production Security Protocols
-- HTTP-only reverse proxy via Nexus Gateway.
-- Dedicated port allocation with zero port conflict.
+## 📜 Live Deployment Logs
+Logs are stored at `/tmp/pytest-of-root/pytest-13/test_supervised_worker_lifecyc0/workspaces/prod-product-worker-305d2d/logs/deploy.log`.
